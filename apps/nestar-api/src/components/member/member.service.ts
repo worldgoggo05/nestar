@@ -1,4 +1,3 @@
-
 import {  BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, ObjectId } from 'mongoose';
@@ -197,7 +196,7 @@ public async getAllMembersByAdmin(input: MembersInquiry): Promise<Members> {
 }
 
 
-public async updateMembersByAdmin(input: MemberUpdate): Promise<Member> {
+public async updateMemberByAdmin(input: MemberUpdate): Promise<Member> {
   const result: Member = await this.memberModel
   .findOneAndUpdate({_id: input._id}, input, {new: true})
   .exec();

@@ -86,9 +86,9 @@ public async getAgents( @Args('input') input: AgentsInquiry, @AuthMember('_id') 
     @Roles(MemberType.ADMIN)
     @UseGuards(RolesGuard)
     @Mutation(() => Member)
-    public async updateMembersByAdmin(@Args("input") input: MemberUpdate): Promise<Member> {
-        console.log('Mutation: updateMembersByAdmin');
-        return await this.memberService.updateMembersByAdmin(input);
+    public async updateMemberByAdmin(@Args("input") input: MemberUpdate): Promise<Member> {
+        console.log('Mutation: updateMemberByAdmin');
+        return await this.memberService.updateMemberByAdmin(input);
     }
 
 }
