@@ -12,7 +12,7 @@ export class PropertyService {
     private memberService: MemberService,
 ) {};
 
-    public async createPropety(input: PropertyInput): Promise<Property> {
+    public async createProperty(input: PropertyInput): Promise<Property> {
         try {
             const result = await this.propertyModel.create(input);
             await this.memberService.memberStatsEditor({
@@ -22,7 +22,7 @@ export class PropertyService {
             });
             return result
         } catch (err) {
-            console.log('ERROR: createPropety:', err.message);
+            console.log('ERROR: createProperty:', err.message);
             throw new BadRequestException(Message.CREATE_FAILED);
         }
     }

@@ -16,13 +16,13 @@ export class PropertyResolver {
     @Roles(MemberType.AGENT)
     @UseGuards(RolesGuard)
     @Mutation(() => Property)
-    public async createPropety(
+    public async createProperty(
         @Args("input") input: PropertyInput,
         @AuthMember('_id') memberId: ObjectId
     ): Promise<Property> {
-        console.log('Mutation: createPropety');
+        console.log('Mutation: createProperty');
         input.memberId = memberId
         
-        return await this.propertyService.createPropety(input);
+        return await this.propertyService.createProperty(input);
     }
 }
