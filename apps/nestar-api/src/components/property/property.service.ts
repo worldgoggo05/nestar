@@ -21,7 +21,7 @@ export class PropertyService {
     private viewService: ViewService
 ) {};
 
-    public async createPropety(input: PropertyInput): Promise<Property> {
+    public async createProperty(input: PropertyInput): Promise<Property> {
         try {
             const result = await this.propertyModel.create(input);
             await this.memberService.memberStatsEditor({
@@ -31,7 +31,7 @@ export class PropertyService {
             });
             return result
         } catch (err) {
-            console.log('ERROR: createPropety:', err.message);
+            console.log('ERROR: createProperty:', err.message);
             throw new BadRequestException(Message.CREATE_FAILED);
         }
     }
@@ -238,22 +238,15 @@ export class PropertyService {
 		}
 		return result;
 	}
-	// public async removePropertyByAdmin(propertyId: ObjectId): Promise<Property> {
+	public async removePropertyByAdmin(propertyId: ObjectId): Promise<Property> {
 
-	// 	const search: T = { _id: propertyId, propertyStatus: PropertyStatus.DELETE };
-	// 	console.log('searchs', search);
+		const search: T = { _id: propertyId, propertyStatus: PropertyStatus.DELETE };
+		console.log('searchs', search);
 
-	// 	const result = await this.propertyModel.findOneAndDelete(search).exec();
-	// 	console.log('result:', search);
-
-	// 	const search: T = { _id: propertyId, PropertyStatus: PropertyStatus.DELETE };
-	// 	console.log('searchs', search);
-
-	// 	const result = await this.propertyModel.findOneAndDelete(search).exec();
-	// 	console.log('result:', result);
-
-
-	// 	if (!result) throw new InternalServerErrorException(Message.REMOVE_FAILED);
-	// 	return result;
-	// }
+		const result = await this.propertyModel.findOneAndDelete(search).exec();
+		console.log('result:', search);
+        
+		if (!result) throw new InternalServerErrorException(Message.REMOVE_FAILED);
+		return result;
+	}
 }
