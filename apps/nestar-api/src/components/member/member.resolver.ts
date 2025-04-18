@@ -105,9 +105,9 @@ public async likeTargetMember(
     @Roles(MemberType.ADMIN)
     @UseGuards(RolesGuard)
     @Mutation(() => Member)
-    public async updateMemberByAdmin(@Args("input") input: MemberUpdate): Promise<Member> {
+    public async updateMembersByAdmin(@Args("input") input: MemberUpdate): Promise<Member> {
         console.log('Mutation: updateMembersByAdmin');
-        return await this.memberService.updateMemberByAdmin(input);
+        return await this.memberService.updateMembersByAdmin(input);
     }
 
   /* UPLOADER */
