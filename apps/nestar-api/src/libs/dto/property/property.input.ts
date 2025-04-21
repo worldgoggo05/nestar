@@ -111,15 +111,15 @@ class PISearch {
 
 	@IsOptional()
 	@Field(() => [Int], { nullable: true })
-	roomList?: Number[];
+	roomsList?: Number[];
 
 	@IsOptional()
 	@Field(() => [Int], { nullable: true })
 	bedsList?: Number[];
 
 	@IsOptional()
-	@Field(() => [Int], { nullable: true })
-	options?: Number[];
+	@Field(() => [String], { nullable: true })
+	options?: string[];
 
 	@IsOptional()
 	@Field(() => PricesRange, { nullable: true })
