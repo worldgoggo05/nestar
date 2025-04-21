@@ -9,6 +9,7 @@ import { Direction, Message } from '../../libs/enums/common.enum';
 import { CommentGroup, CommentStatus } from '../../libs/enums/comment.enum';
 import { Comment, Comments } from '../../libs/dto/comment/comment';
 import { CommentUpdate } from '../../libs/dto/comment/comment.update';
+import { lookupMember } from '../../libs/config';
 
 @Injectable()
 export class CommentService {
@@ -91,7 +92,12 @@ export class CommentService {
 				{ $sort: sort },
 				{
 					$facet: {
-						list: [{ $skip: (input.page - 1) * input.limit }, { $limit: input.limit }],
+						list: [
+							{ $skip: (input.page - 1) * input.limit },
+							{ $limit: input.limit },
+							lookupMember,
+							{ $unwind: '$memberData' }
+						],
 						metaCounter: [{ $count: 'total' }],
 					},
 				},
